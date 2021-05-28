@@ -5,7 +5,7 @@ import org.scalacheck.Arbitrary._
 
 object Generators:
 
-  val MAX_SIZE = 10
+  val MAX_SIZE = 2
 
   def genLeaf[T](tGen: Gen[T]): Gen[D[T]] = tGen.map(D.Leaf(_))
 
