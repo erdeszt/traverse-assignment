@@ -69,9 +69,9 @@ trait LowPriorityInstances1 extends LowPriorityInstances0:
         case (Leaf(l), Leaf(r)) => Leaf(l |+| r)
         // Leaf + H or V adds the leaf to the right side
         case (Leaf(l), HSplit(rl, rr)) => HSplit(rl, combine(Leaf(l), rr))
-        case (HSplit(ll, lr), Leaf(r)) => HSplit(ll, combine(Leaf(r), lr))
+        case (HSplit(ll, lr), Leaf(r)) => HSplit(ll, combine(lr, Leaf(r)))
         case (Leaf(l), VSplit(rl, rr)) => VSplit(rl, combine(Leaf(l), rr))
-        case (VSplit(ll, lr), Leaf(r)) => VSplit(ll, combine(Leaf(r), lr))
+        case (VSplit(ll, lr), Leaf(r)) => VSplit(ll, combine(lr, Leaf(r)))
         // H + H and V + V combines the two sides separately
         case (HSplit(ll, lr), HSplit(rl, rr)) => HSplit(combine(ll, rl), combine(lr, rr))
         case (VSplit(ll, lr), VSplit(rl, rr)) => VSplit(combine(ll, rl), combine(lr, rr))

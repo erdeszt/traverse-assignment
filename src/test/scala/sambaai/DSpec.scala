@@ -48,11 +48,11 @@ object DSpec extends Properties("D"):
     (Monoid[D[Int]].empty |+| d) === d
   }
 
-  property("monoid associativity") = forAll { (x: D[Int], y: D[Int], z: D[Int]) =>
+  property("monoid associativity commutative") = forAll { (x: D[Int], y: D[Int], z: D[Int]) =>
     ((x |+| y) |+| z) === (x |+| (y |+| z))
   }
 
-  property("monoid associativity refuted") = forAll { (x: D[List[Int]], y: D[List[Int]], z: D[List[Int]]) =>
+  property("monoid associativity non-commutative") = forAll { (x: D[List[Int]], y: D[List[Int]], z: D[List[Int]]) =>
     ((x |+| y) |+| z) === (x |+| (y |+| z))
   }
 
