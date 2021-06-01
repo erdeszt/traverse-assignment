@@ -52,6 +52,10 @@ object DSpec extends Properties("D"):
     ((x |+| y) |+| z) === (x |+| (y |+| z))
   }
 
+  property("monoid associativity refuted") = forAll { (x: D[List[Int]], y: D[List[Int]], z: D[List[Int]]) =>
+    ((x |+| y) |+| z) === (x |+| (y |+| z))
+  }
+
   property("functor identity") = forAll { (d: D[Int]) =>
     d.map(identity) === d
   }
